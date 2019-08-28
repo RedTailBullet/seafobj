@@ -24,16 +24,7 @@ class CommitDiffer(object):
 
     def diff_to_unicode(self):
         # you can also do this by overwriting key points
-        res = []
-        diff_res = self.diff()
-        for dirents in diff_res:
-            for dirent in dirents:
-                for key in list(dirent.__dict__.keys()):
-                    v = dirent.__dict__[key]
-                    if isinstance(v, str):
-                        dirent.__dict__[key] = v.decode('utf8')
-            res.append(dirents)
-        return tuple(res)
+        return tuple(self.diff())
 
     def diff(self):
         added_files = []
